@@ -2,3 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
+testpackage.Rproj
+.gitignore
+inst/doc
