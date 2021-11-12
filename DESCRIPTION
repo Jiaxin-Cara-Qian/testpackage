@@ -3,7 +3,7 @@ Type: Package
 Title: A test example about how to create a package
 Version: 0.1.0
 Author: JiaxinQian
-Maintainer: no
+Maintainer: <jiaxinq@umich.edu>
 Description: demostration
 License: GPL-3
 Encoding: UTF-8
