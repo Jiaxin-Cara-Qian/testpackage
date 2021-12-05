@@ -1,10 +1,10 @@
 Package: testpackage
 Type: Package
-Title: Facilitate Understanding of Statistical Concepts from BIOSTAT650
+Title: Resisuals and Outlier Influence in Linear Regression 
 Version: 0.1.0
 Author: JiaxinQian
 Maintainer: <jiaxinq@umich.edu>
-Description: Solve linear regression problems conveniently.
+Description: Compute leverage values in X space of a linear regression model, three commonly used resisuals (standardized, internally studentized, and externally studentized residuals), and diagnostic statistics for identifying outliers (DFFITS, Cook's Distance, and COVRATIO) with their individual plotting functions.  
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

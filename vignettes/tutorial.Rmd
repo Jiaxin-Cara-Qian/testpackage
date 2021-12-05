@@ -16,15 +16,70 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(testpackage)
+library(stats)
+library(ggplot2)
 ```
 
-To use function `square`: 
+To construct a linear regression model using demo_data
 ```{r}
-square(1:3)
+m = lm(fev~A+H+M+S, data = demo_data)
 ```
 
-To include a plot
+To test whether maximum leverage is the same from `hat_matrix` and `hatvalues` manualy
 ```{r}
-plot(1:10, square(1:10))
+h = hatvalues(m)
+all.equal(as.numeric(hat_matrix(m)[1]), unname(h[which.max(h)]))
+bench::mark(as.numeric(hat_matrix(m)[1]), unname(h[which.max(h)]))
+plot(bench::mark(mine = as.numeric(hat_matrix(m)[1]), original = unname(h[which.max(h)])))
+```
+
+
+Benchmark `res_3` and `rstandard` for computing internally studentized residuals
+```{r}
+all.equal(rstandard(m),res_3(demo_data, m, r = "int"))
+int_bench = bench::mark(original = rstandard(m),mine = res_3(demo_data, m, r = "int"))
+print(int_bench)
+plot(int_bench)
+```
+
+Benchmark `res_3` and `rstandard` for computing externally studentized residuals
+```{r}
+all.equal(rstudent(m),res_3(demo_data, m, r = "ex"))
+ex_bench = bench::mark(original = rstudent(m),mine = res_3(demo_data, m, r = "ex"))
+print(ex_bench)
+plot(ex_bench)
+```
+
+
+Benchmark `outlier_influence` and `diffits` for computing DFFITS
+```{r}
+all.equal(dffits(m),outlier_influence(demo_data, m, option = c("dffits")))
+result_ff = bench::mark(original = dffits(m),mine = outlier_influence(demo_data, m, option = c("dffits")))
+print(result_ff)
+plot(result_ff)
+```
+
+Becnhmark `outlier_influence` and `cooks.distance` for computing Cook's distance
+```{r}
+all.equal(outlier_influence(demo_data, m, option = "cd"), cooks.distance(m))
+result_cd = bench::mark(mine = outlier_influence(demo_data, m, option = "cd"), original = cooks.distance(m))
+print(result_cd)
+plot(result_cd)
+```
+
+Benchmark `outlier_influence` and `covratio` for computing COVRATIO
+```{r}
+all.equal(outlier_influence(demo_data, m, option = c("cvr")), covratio(m))
+result_cvr = bench::mark(mine = outlier_influence(demo_data, m, option = c("cvr")), original = covratio(m))
+print(result_cvr)
+plot(result_cvr)
+```
+
+
+Demostration on `plot_dffits` , `plot_cd`, and `plot_CVR`
+```{r}
+plot_dffits(m)
+plot_cd(m)
+plot_CVR(m)
 ```
 

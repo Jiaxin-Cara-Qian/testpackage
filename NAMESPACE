@@ -1,3 +1,4 @@
 exportPattern("^[[:alpha:]]+")
 import("stats")
 import("ggplot2")
+import("tidyr")

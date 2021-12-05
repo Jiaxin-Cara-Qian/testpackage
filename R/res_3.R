@@ -7,7 +7,7 @@
 #'@usage res_3(input_data, fit.model ,r = c("z", "int", "ex"))
 #'
 #'@param input_data a data frame containing the variables in th model
-#'@param fit.model a R object, returned by \link[stats]{lm}
+#'@param fit.model an R object, returned by \link[stats]{lm}
 #'@param r what type of resisuals will be computed: "z" is standardized resisuals,
 #'"int" is internally studentized resisuals, and "ex" is externally studentized resisuals
 #'

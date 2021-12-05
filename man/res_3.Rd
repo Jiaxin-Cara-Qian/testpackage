@@ -9,7 +9,7 @@ res_3(input_data, fit.model ,r = c("z", "int", "ex"))
 \arguments{
 \item{input_data}{a data frame containing the variables in th model}
 
-\item{fit.model}{a R object, returned by \link[stats]{lm}}
+\item{fit.model}{an R object, returned by \link[stats]{lm}}
 
 \item{r}{what type of resisuals will be computed: "z" is standardized resisuals,
 "int" is internally studentized resisuals, and "ex" is externally studentized resisuals}

@@ -1,8 +1,13 @@
 # testpackage
-my test r package
 
-<!-- badges: start -->
-  [![R build status](https://github.com/Jiaxin-Cara-Qian/testpackage/workflows/R-CMD-check/badge.svg)](https://github.com/Jiaxin-Cara-Qian/testpackage/actions)
-  
-[![codecov](https://codecov.io/gh/Jiaxin-Cara-Qian/testpackage/branch/master/graph/badge.svg)](https://codecov.io/gh/Jiaxin-Cara-Qian/testpackage)
-  <!-- badges: end -->
+##Overview
+testpackage computes and examines the residuals and influential outliers from
+a linear regression model. It contains the following parts: 
+        - 'hat_matrix': computes leverage and its descriptive statistics. 
+        - 'res_3': computes three residuals from a linear model  (standardized,internally studentized, and externally studentized residuals). 
+        - 'outlier_influence': computes three diagnostic statistics for measuring influential points(DFFITS, Cook's Distance, and COVRATIO).
+        - Plot Influential Outliers: plots DFFITS, Cook's Distance, and COVRATIO.
+
+
+
+
